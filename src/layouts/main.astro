@@ -1,6 +1,5 @@
 ---
-import Header, { TopNotice } from "@/components/react/Header";
-import ComingSoon from "@/components/react/ComingSoon";
+import Header from "@/components/react/Header";
 const { title } = Astro.props;
 
 const currentUrl = Astro.url.pathname;
@@ -15,7 +14,7 @@ const currentUrl = Astro.url.pathname;
     <meta name="generator" content={Astro.generator} />
 
     <!-- Primary Meta Tags -->
-    <title>Prasu Labs - Community-Driven Open Source Projects</title>
+    <title>{title} | Prasu Labs - Community-Driven Open Source Projects</title>
     <meta
       name="description"
       content="Prasu Labs is an unregistered organization dedicated to creating open-source software, community-driven solutions, and impactful web projects. Discover projects like Jeevan Daan and Lekhak, and learn how you can contribute to the future of open source on GitHub."
