@@ -1,13 +1,21 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig } from "astro/config";
 
-import svelte from '@astrojs/svelte';
+import svelte from "@astrojs/svelte";
 
-import tailwind from '@astrojs/tailwind';
+import tailwind from "@astrojs/tailwind";
 
-import react from '@astrojs/react';
+import react from "@astrojs/react";
+
+import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [svelte(), tailwind({applyBaseStyles:false}), react()]
+  site:"https://prasu.xyz",
+  integrations: [
+    svelte(),
+    tailwind({ applyBaseStyles: false }),
+    react(),
+    sitemap(),
+  ],
 });
