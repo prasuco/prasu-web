@@ -16,12 +16,11 @@ const currentUrl = Astro.url.pathname;
     <title>prasuco - {title}</title>
   </head>
   <body>
-    <TopNotice />
-
-    <Header data={{ active: currentUrl }} client:load />
-
-    <ComingSoon />
-
-    <slot />
+    <div class="min-h-screen bg-white">
+      <Header data={{ active: currentUrl }} client:load />
+      <main class="pt-16">
+        <slot />
+      </main>
+    </div>
   </body>
 </html>
