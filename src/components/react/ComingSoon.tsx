@@ -7,38 +7,41 @@ const ComingSoon = () => {
       <div className="relative isolate overflow-hidden">
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(45rem_50rem_at_top,theme(colors.indigo.100),white)] opacity-20" />
         <div className="absolute inset-y-0 right-1/2 -z-10 mr-16 w-[200%] origin-bottom-left skew-x-[-30deg] bg-white shadow-xl shadow-indigo-600/10 ring-1 ring-indigo-50 sm:mr-28 lg:mr-0 xl:mr-16 xl:origin-center" />
-        <div className="mx-auto max-w-7xl px-6 pt-10 lg:px-8">
-          <div className="mx-auto max-w-2xl gap-x-14 lg:mx-0 lg:flex lg:max-w-none lg:items-center">
-            <div className="w-full max-w-xl lg:shrink-0 xl:max-w-2xl">
-              <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-                Driven by Passion,
-                <br />
-                Powered by Community
-              </h1>
-              <p className="relative mt-6 text-lg leading-8 text-gray-600 sm:max-w-md lg:max-w-none">
-                Prasu Labs is a grassroots initiative focused on creating
-                meaningful open-source solutions that empower communities and
-                drive positive change through technology.
-              </p>
-              <div className="mt-10 flex items-center gap-x-6">
-                <a
-                  href="/projects"
-                  className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                >
-                  View Projects
-                </a>
-                <a
-                  href="https://github.com/prasuco"
-                  className="text-sm font-semibold leading-6 text-gray-900"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  GitHub <span aria-hidden="true">→</span>
-                </a>
-              </div>
+        <div className="mx-auto max-w-4xl  px-6 pt-10 lg:px-8">
+
+          <div className="flex flex-col items-center text-center justify-center">
+
+            <h1 className="text-4xl font-bold tracking-tight text-center text-gray-900 sm:text-6xl">
+              Driven by Passion,
+
+              Powered by Community
+            </h1>
+            <p className="relative mt-6 text-lg leading-8 text-gray-600 sm:max-w-md lg:max-w-none">
+              Prasu Labs is a grassroots initiative focused on creating
+              meaningful open-source solutions that empower communities and
+              drive positive change through technology.
+            </p>
+            <div className="mt-10 flex items-center gap-x-6">
+              <a
+                href="/projects"
+                className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              >
+                View Projects
+              </a>
+              <a
+                href="https://github.com/prasuco"
+                className="text-sm font-semibold leading-6 text-gray-900"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                GitHub <span aria-hidden="true">→</span>
+              </a>
             </div>
           </div>
+
+
         </div>
+
       </div>
 
       {/* Stats Section */}
