@@ -1,3 +1,3 @@
-## astro for prasuco
+## prasuco built with astro
 
-> currently building
+> need collaborators to work on this.
