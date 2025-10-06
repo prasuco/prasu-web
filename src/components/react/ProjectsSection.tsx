@@ -23,6 +23,15 @@ const ProjectsSection = () => {
                     </p>
                 </div>
             </section>
+
+
+            <section className='mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 text-center m-4'>
+                <h2 className='text-3xl font-bold'>
+                    Coming Soon
+                </h2>
+            </section>
+
+
         </>
     )
 }
