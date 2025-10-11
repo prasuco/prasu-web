@@ -32,7 +32,7 @@ const Header = ({ data }: IHeaderProps) => {
         >
           <div className="flex lg:flex-1">
             <a href="/" className="-m-1.5 p-1.5 font-semibold text-xl">
-              Prasu Labs
+              Prasu Co
             </a>
           </div>
           <div className="flex lg:hidden">
@@ -50,8 +50,8 @@ const Header = ({ data }: IHeaderProps) => {
                 key={item.name}
                 href={item.href}
                 className={`text-sm font-semibold leading-6 ${data.active === item.href
-                    ? "text-indigo-600"
-                    : "text-gray-900 hover:text-indigo-600"
+                  ? "text-indigo-600"
+                  : "text-gray-900 hover:text-indigo-600"
                   }`}
               >
                 {item.name}
