@@ -8,3 +8,4 @@ This repository contains our vision , dedication and projects.
 - Astro: for project scaffolding and structure.
 - Tailwindcss: for styling.
 - React: for interactivity and ui pieces.
+- mdx for static content, via astro content.
