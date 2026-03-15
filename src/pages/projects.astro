@@ -1,8 +1,55 @@
 ---
-import ProjectsSection from "@/components/react/ProjectsSection";
+import type { CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
 import Main from "@/layouts/main.astro";
+
+const projects = await getCollection("projects");
+const sortedProjects = projects.sort((a, b) => {
+	// Featured projects first
+	if (a.data.featured && !b.data.featured) return -1;
+	if (!a.data.featured && b.data.featured) return 1;
+	// Then by status (active first)
+	if (a.data.status === "active" && b.data.status !== "active") return -1;
+	if (a.data.status !== "active" && b.data.status === "active") return 1;
+	return 0;
+});
 ---
 
-<Main title="Projects">
-    <ProjectsSection />
+<Main title="Products - prasuco">
+	<div class="flex flex-col gap-16">
+		<section>
+			<h1 class="text-xl font-bold mb-8">Products</h1>
+			<div class="flex flex-col gap-6">
+				{sortedProjects.map((project: CollectionEntry<"projects">) => (
+					<div class="flex gap-4 items-start">
+						<span class="text-xl leading-none mt-1">📦</span>
+						<div>
+							<a href={`/projects/${project.slug}`} class="font-medium text-[16px] text-text-primary-light dark:text-text-primary-dark no-underline hover:text-accent-green">
+								{project.data.title}
+							</a>
+							<p class="text-[15px] text-text-secondary-light dark:text-text-secondary-dark mt-1">
+								{project.data.description}
+							</p>
+							<div class="flex gap-3 text-[13px] mt-2 text-text-secondary-light dark:text-text-secondary-dark font-mono">
+								{project.data.status === "active" ? (
+									<span class="text-accent-green">active</span>
+								) : (
+									<span>{project.data.status}</span>
+								)}
+								{project.data.repoUrl && (
+									<a href={project.data.repoUrl} target="_blank" rel="noopener noreferrer" class="hover:text-accent-green">
+										github →
+									</a>
+								)}
+							</div>
+						</div>
+					</div>
+				))}
+
+				{projects.length === 0 && (
+					<p class="text-[15px] text-text-secondary-light dark:text-text-secondary-dark">No products yet.</p>
+				)}
+			</div>
+		</section>
+	</div>
 </Main>

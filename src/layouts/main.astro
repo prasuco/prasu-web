@@ -1,9 +1,15 @@
 ---
-import Header from "@/components/react/Header";
-const { title } = Astro.props;
-
-const currentUrl = Astro.url.pathname;
 import "../styles/global.css";
+
+export interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Prasuco - Product Labs",
+  description = "We build small, useful software and share it with the world.",
+} = Astro.props;
 ---
 
 <html lang="en">
@@ -13,52 +19,60 @@ import "../styles/global.css";
     <link rel="sitemap" href="/sitemap-index.xml" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-
-    <!-- Primary Meta Tags -->
-    <title>{title} | Prasu Co - Community-Driven Open Source Projects</title>
-    <meta
-      name="description"
-      content="Prasu Co is an unregistered organization dedicated to creating open-source software, community-driven solutions, and impactful web projects. Discover projects like Jeevan Daan and Lekhak, and learn how you can contribute to the future of open source on GitHub."
-    />
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://prasu.xyz/" />
-    <meta
-      property="og:title"
-      content="Prasu Co - Community-Driven Open Source Projects"
-    />
-    <meta
-      property="og:description"
-      content="Join Prasu Co in building innovative open-source solutions for real-world needs. Explore projects like Jeevan Daan and Lekhak, and become part of a vibrant developer community."
-    />
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://prasu.xyz/" />
-    <meta
-      property="twitter:title"
-      content="Prasu Co - Community-Driven Open Source Projects"
-    />
-    <meta
-      property="twitter:description"
-      content="Prasu Co is a collaborative open-source community. Join us in developing impactful projects like Jeevan Daan and Lekhak. Explore, contribute, and make a difference."
-    />
-
-    <!-- Additional SEO Tags -->
-    <meta
-      name="keywords"
-      content="Prasu Co, open source, GitHub projects, Jeevan Daan, Lekhak, software development, community-driven projects, open-source software, collaborative development"
-    />
-    <meta name="robots" content="index, follow" />
-    <meta name="author" content="Prasu Co" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
   </head>
-  <body>
-    <div class="min-h-screen bg-white">
-      <Header data={{ active: currentUrl }} client:load />
-      <main class="pt-10">
+  <body class="antialiased min-h-screen flex flex-col py-12 md:py-20">
+    <div class="max-w-[680px] w-full mx-auto px-4 flex flex-col flex-1">
+      <header class="mb-16 flex items-center justify-between">
+        <a
+          href="/"
+          class="text-xl font-semibold inline-block no-underline text-inherit hover:text-inherit"
+        >
+          <span class="text-accent-green font-bold">pras</span>uco
+        </a>
+        <nav class="flex items-center gap-4 text-[15px]">
+          <a
+            href="/projects"
+            class="text-text-secondary-light dark:text-text-secondary-dark hover:text-accent-green transition-colors"
+            >products</a
+          >
+          <a
+            href="/blogs"
+            class="text-text-secondary-light dark:text-text-secondary-dark hover:text-accent-green transition-colors"
+            >writing</a
+          >
+          <a
+            href="https://github.com/prasuco"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-text-secondary-light dark:text-text-secondary-dark hover:text-accent-green transition-colors"
+            >github</a
+          >
+        </nav>
+      </header>
+
+      <main class="flex-1">
         <slot />
       </main>
+
+      <footer
+        class="mt-24 pt-8 border-t border-divider-light dark:border-divider-dark text-[13px] text-text-secondary-light dark:text-text-secondary-dark font-mono flex items-center justify-between"
+      >
+        <span>built with care by prasuco</span>
+        <div class="flex gap-4">
+          <a
+            href="https://github.com/prasuco"
+            target="_blank"
+            rel="noopener noreferrer">github</a
+          >
+          <a
+            href="https://x.com/prabin_subedi_"
+            target="_blank"
+            rel="noopener noreferrer">twitter</a
+          >
+        </div>
+      </footer>
     </div>
   </body>
 </html>

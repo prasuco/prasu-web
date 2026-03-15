@@ -1,9 +1,71 @@
 ---
-import Main from "../layouts/main.astro";
-import ComingSoon  from "@/components/react/ComingSoon";
+import Main from "@/layouts/main.astro";
+import { getCollection } from "astro:content";
+
+const allProjects = await getCollection("projects");
+const allBlogs = await getCollection("blogs");
+
+const products = allProjects.slice(0, 3);
+const writings = allBlogs.slice(0, 3);
 ---
 
-<Main title="Homepage">
+<Main title="prasuco">
+  <div class="flex flex-col gap-16">
+    <section>
+      <h2 class="text-[18px] font-semibold mb-6">About</h2>
 
-  <ComingSoon />
+      <p>
+        We build small, useful software and share it with the world. Some
+        products become tools. Some become libraries. Some remain experiments.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-[18px] font-semibold mb-6">Products</h2>
+      <div class="flex flex-col gap-4">
+        {
+          products.map((project) => (
+            <div class="flex gap-4 items-start">
+              <span class="text-xl leading-none mt-1">📦</span>
+              <div>
+                <a
+                  href={`/projects/${project.slug}`}
+                  class="font-medium text-text-primary-light dark:text-text-primary-dark no-underline hover:text-accent-green"
+                >
+                  {project.data.title}
+                </a>
+                <p class="text-[15px] text-text-secondary-light dark:text-text-secondary-dark mt-1">
+                  {project.data.description}
+                </p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-[18px] font-semibold mb-6">Writing</h2>
+      <div class="flex flex-col gap-4">
+        {
+          writings.map((post) => (
+            <div class="flex gap-4 items-start">
+              <span class="text-xl leading-none mt-1">📝</span>
+              <div>
+                <a
+                  href={`/blogs/${post.slug}`}
+                  class="font-medium text-text-primary-light dark:text-text-primary-dark no-underline hover:text-accent-green"
+                >
+                  {post.data.title}
+                </a>
+                <p class="text-[15px] text-text-secondary-light dark:text-text-secondary-dark mt-1">
+                  {post.data.description}
+                </p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+  </div>
 </Main>

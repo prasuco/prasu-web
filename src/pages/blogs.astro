@@ -1,0 +1,39 @@
+---
+import { getCollection } from "astro:content";
+import Main from "@/layouts/main.astro";
+
+const blogs = await getCollection("blogs");
+const sortedBlogs = blogs.sort(
+	(a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime(),
+);
+---
+
+<Main title="Writing - prasuco">
+	<div class="flex flex-col gap-16">
+		<section>
+			<h1 class="text-xl font-bold mb-8">Writing</h1>
+			<div class="flex flex-col gap-6">
+				{sortedBlogs.map((blog) => (
+					<div class="flex gap-4 items-start">
+						<span class="text-xl leading-none mt-1">📝</span>
+						<div>
+							<a href={`/blogs/${blog.slug}`} class="font-medium text-[16px] text-text-primary-light dark:text-text-primary-dark no-underline hover:text-accent-green">
+								{blog.data.title}
+							</a>
+							<p class="text-[15px] text-text-secondary-light dark:text-text-secondary-dark mt-1">
+								{blog.data.description}
+							</p>
+							<div class="flex gap-3 text-[13px] mt-2 text-text-secondary-light dark:text-text-secondary-dark font-mono">
+								<span>{new Date(blog.data.publishDate).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</span>
+							</div>
+						</div>
+					</div>
+				))}
+
+				{blogs.length === 0 && (
+					<p class="text-[15px] text-text-secondary-light dark:text-text-secondary-dark">No writing published yet.</p>
+				)}
+			</div>
+		</section>
+	</div>
+</Main>

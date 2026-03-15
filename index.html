@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body id="b">
+
+</body>
+
+<script>
+    let colors = ['red', 'green', 'orange', 'yellow', 'green', 'blue', 'purple', 'pink']
+
+    let body = document.getElementById("b")
+
+    let i = 0;
+    function changeBg() {
+        body.style.background = colors[i];
+        console.log('change')
+        if (i == colors.length - 1) {
+            i = 0
+        } else {
+            i++
+        }
+    }
+    setInterval(changeBg, 1000)
+</script>
+
+</html>

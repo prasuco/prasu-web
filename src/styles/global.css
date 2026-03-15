@@ -1,29 +1,42 @@
 @import "tailwindcss";
 
 @theme {
-    --color-jade-green-50: oklch(97.07% 0.022 151.66);
-    --color-jade-green-100: oklch(94.15% 0.045 153.34);
-    --color-jade-green-200: oklch(88.43% 0.087 152.06);
-    --color-jade-green-300: oklch(83.21% 0.130 150.87);
-    --color-jade-green-400: oklch(78.26% 0.167 149.26);
-    --color-jade-green-500: oklch(74.09% 0.198 147.37);
-    --color-jade-green-600: oklch(62.74% 0.166 147.50);
-    --color-jade-green-700: oklch(51.11% 0.133 147.72);
-    --color-jade-green-800: oklch(38.50% 0.096 148.09);
-    --color-jade-green-900: oklch(25.07% 0.056 149.10);
-    --color-jade-green-950: oklch(20.39% 0.040 150.96);
+	--color-accent-green: #22C55E;
+	
+	--color-bg-light: #FFFFFF;
+	--color-text-primary-light: #111111;
+	--color-text-secondary-light: #6B7280;
+	--color-divider-light: #E5E7EB;
 
-    --color-twitter-blue-50: oklch(95.90% 0.015 241.77);
-    --color-twitter-blue-100: oklch(91.83% 0.032 243.71);
-    --color-twitter-blue-200: oklch(83.97% 0.062 242.62);
-    --color-twitter-blue-300: oklch(76.02% 0.094 244.11);
-    --color-twitter-blue-400: oklch(68.37% 0.124 245.83);
-    --color-twitter-blue-500: oklch(61.47% 0.151 248.38);
-    --color-twitter-blue-600: oklch(52.16% 0.126 248.42);
-    --color-twitter-blue-700: oklch(42.71% 0.101 247.98);
-    --color-twitter-blue-800: oklch(32.68% 0.072 246.80);
-    --color-twitter-blue-900: oklch(21.55% 0.043 246.75);
-    --color-twitter-blue-950: oklch(18.07% 0.032 245.08);
+	--color-bg-dark: #0B0B0B;
+	--color-text-primary-dark: #F3F4F6;
+	--color-text-secondary-dark: #9CA3AF;
+	--color-divider-dark: #1F2937;
+}
 
+@layer base {
+	html {
+		font-family: Inter, system-ui, -apple-system, sans-serif;
+		background-color: var(--color-bg-light);
+		color: var(--color-text-primary-light);
+		line-height: 1.6;
+	}
+	
+	@media (prefers-color-scheme: dark) {
+		html {
+			background-color: var(--color-bg-dark);
+			color: var(--color-text-primary-dark);
+		}
+	}
 
+	h1, h2, h3, h4, h5, h6 {
+		line-height: 1.3;
+	}
+
+	a {
+		transition: color 150ms ease;
+	}
+	a:hover {
+		color: var(--color-accent-green);
+	}
 }
