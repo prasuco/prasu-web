@@ -1,0 +1,48 @@
+---
+import Main from "@/layouts/main.astro";
+---
+
+<Main title="Friends - prasuco">
+	<div class="flex flex-col gap-16">
+		<section>
+			<h1 class="text-xl font-bold mb-8">Friends & Contributors</h1>
+			<p class="text-[15px] text-text-secondary-light dark:text-text-secondary-dark mb-8">
+				The people who help make Prasuco possible. We're just a group of friends hacking on ideas.
+			</p>
+			
+			<div class="flex flex-col gap-8">
+				<div class="flex gap-4 items-start">
+					<div class="w-10 h-10 bg-[#111111] dark:bg-divider-dark rounded-full flex items-center justify-center shrink-0">
+						<span class="text-sm font-bold text-white">PS</span>
+					</div>
+					<div>
+						<h3 class="font-medium text-[16px] text-text-primary-light dark:text-text-primary-dark">
+							Prabin Subedi
+						</h3>
+						<p class="text-[15px] text-text-secondary-light dark:text-text-secondary-dark mt-1">
+							Founder & Lead Developer.
+						</p>
+						<div class="flex gap-3 text-[13px] mt-2 font-mono">
+							<a href="https://github.com/prabin-subedi" target="_blank" rel="noopener noreferrer" class="text-text-secondary-light dark:text-text-secondary-dark hover:text-accent-green underline decoration-divider-light dark:decoration-divider-dark underline-offset-2">
+								github
+							</a>
+							<span class="text-divider-light dark:text-divider-dark">/</span>
+							<a href="https://linkedin.com/in/prabin-subedi" target="_blank" rel="noopener noreferrer" class="text-text-secondary-light dark:text-text-secondary-dark hover:text-accent-green underline decoration-divider-light dark:decoration-divider-dark underline-offset-2">
+								linkedin
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="border-t border-divider-light dark:border-divider-dark pt-8">
+			<h2 class="text-[18px] font-semibold mb-6">Join the fun</h2>
+			<div class="text-[15px] space-y-4 text-text-secondary-light dark:text-text-secondary-dark max-w-prose">
+				<p>
+					We build things for fun and welcome anyone who wants to join. Check out our <a href="https://github.com/prasuco" target="_blank" rel="noopener noreferrer" class="text-text-primary-light dark:text-text-primary-dark hover:text-accent-green underline decoration-divider-light dark:decoration-divider-dark underline-offset-2">GitHub</a> to see what we're working on.
+				</p>
+			</div>
+		</section>
+	</div>
+</Main>
