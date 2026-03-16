@@ -7,7 +7,7 @@ export interface Props {
 }
 
 const {
-  title = "Prasuco - Product Labs",
+  title = "Home",
   description = "We build small, useful software and share it with the world.",
 } = Astro.props;
 ---
@@ -19,17 +19,17 @@ const {
     <link rel="sitemap" href="/sitemap-index.xml" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
+    <title>{title} | prasuco - Product Labs</title>
     <meta name="description" content={description} />
   </head>
   <body class="antialiased min-h-screen flex flex-col py-12 md:py-20">
-    <div class="max-w-[680px] w-full mx-auto px-4 flex flex-col flex-1">
+    <div class="max-w-170 w-full mx-auto px-4 flex flex-col flex-1">
       <header class="mb-16 flex items-center justify-between">
         <a
           href="/"
           class="text-xl font-semibold inline-block no-underline text-inherit hover:text-inherit"
         >
-          <span class="text-accent-green font-bold">pras</span>uco
+          <span class="text-accent-green font-bold">prasu</span>co
         </a>
         <nav class="flex items-center gap-4 text-[15px]">
           <a
