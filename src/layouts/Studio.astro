@@ -1,0 +1,180 @@
+---
+import "../styles/global.css";
+
+export interface Props {
+	title?: string;
+	description?: string;
+	image?: string;
+	type?: "website" | "article";
+	noindex?: boolean;
+}
+
+const site = "https://prasuco.com";
+const defaultDescription =
+	"Prasuco is an independent product lab building focused apps and open-source libraries.";
+const defaultImage = `${site}/prasuco-logo.png`;
+
+const {
+	title = "Home",
+	description = defaultDescription,
+	image = defaultImage,
+	type = "website",
+	noindex = false,
+} = Astro.props;
+
+const path = Astro.url.pathname;
+const canonical = new URL(path, site).href;
+const pageTitle =
+	title === "Home"
+		? "Prasuco — Independent Product Lab"
+		: `${title} — Prasuco`;
+
+const nav = [
+	{ href: "/projects", label: "products" },
+	{ href: "/people", label: "people" },
+	{ href: "/blogs", label: "writing" },
+	{ href: "https://github.com/prasuco", label: "github", external: true },
+];
+
+function isActive(href: string, external?: boolean) {
+	if (external) return false;
+	return path === href || path.startsWith(`${href}/`);
+}
+
+const orgJsonLd = {
+	"@context": "https://schema.org",
+	"@type": "Organization",
+	name: "Prasuco",
+	url: site,
+	logo: `${site}/prasuco-logo.png`,
+	email: "work@prasuco.com",
+	sameAs: ["https://github.com/prasuco"],
+	description: defaultDescription,
+};
+
+const websiteJsonLd = {
+	"@context": "https://schema.org",
+	"@type": "WebSite",
+	name: "Prasuco",
+	url: site,
+	description: defaultDescription,
+	publisher: {
+		"@type": "Organization",
+		name: "Prasuco",
+		url: site,
+	},
+};
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="color-scheme" content="light" />
+		<meta name="theme-color" content="#008a3e" />
+		<meta name="generator" content={Astro.generator} />
+
+		<title>{pageTitle}</title>
+		<meta name="description" content={description} />
+		{
+			noindex ? (
+				<meta name="robots" content="noindex, nofollow" />
+			) : (
+				<meta
+					name="robots"
+					content="index, follow, max-image-preview:large, max-snippet:-1"
+				/>
+			)
+		}
+		<link rel="canonical" href={canonical} />
+
+		<meta property="og:type" content={type} />
+		<meta property="og:site_name" content="Prasuco" />
+		<meta property="og:locale" content="en_US" />
+		<meta property="og:title" content={pageTitle} />
+		<meta property="og:description" content={description} />
+		<meta property="og:url" content={canonical} />
+		<meta property="og:image" content={image.startsWith("http") ? image : new URL(image, site).href} />
+
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:title" content={pageTitle} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={image.startsWith("http") ? image : new URL(image, site).href} />
+
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+		<link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
+
+		<script is:inline type="application/ld+json" set:html={JSON.stringify(orgJsonLd)} />
+		<script is:inline type="application/ld+json" set:html={JSON.stringify(websiteJsonLd)} />
+	</head>
+	<body class="bg-canvas text-ink">
+		<header class="border-b border-border">
+			<div
+				class="max-w-3xl mx-auto px-6 h-14 flex items-center justify-between gap-4"
+			>
+				<a
+					href="/"
+					class="shrink-0 flex items-center gap-2.5 font-semibold tracking-tight"
+				>
+					<img
+						src="/prasuco-logo.svg"
+						alt=""
+						width="28"
+						height="28"
+					/>
+					<span><span class="text-brand">prasu</span>co</span>
+				</a>
+				<nav class="flex items-center gap-5 text-sm text-muted" aria-label="Primary">
+					{
+						nav.map((item) => (
+							<a
+								href={item.href}
+								target={item.external ? "_blank" : undefined}
+								rel={item.external ? "noopener noreferrer" : undefined}
+								class:list={[
+									"hover:text-brand",
+									isActive(item.href, item.external) && "text-brand font-medium",
+								]}
+							>
+								{item.label}
+							</a>
+						))
+					}
+				</nav>
+			</div>
+		</header>
+
+		<main>
+			<slot />
+		</main>
+
+		<footer class="border-t border-border mt-16">
+			<div
+				class="max-w-3xl mx-auto px-6 py-8 flex flex-wrap items-center justify-between gap-3 text-sm text-muted"
+			>
+				<span class="inline-flex items-center gap-2">
+					<img
+						src="/prasuco-logo.svg"
+						alt=""
+						width="18"
+						height="18"
+					/>
+					<span class="text-brand font-semibold">prasuco</span> · product lab
+				</span>
+				<div class="flex items-center gap-5">
+					<a href="mailto:work@prasuco.com" class="hover:text-brand"
+						>work@prasuco.com</a
+					>
+					<a
+						href="https://github.com/prasuco"
+						target="_blank"
+						rel="noopener noreferrer"
+						class="hover:text-brand">github</a
+					>
+				</div>
+			</div>
+		</footer>
+	</body>
+</html>

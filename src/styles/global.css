@@ -1,41 +1,44 @@
 @import "tailwindcss";
-@custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-	--color-accent-green: #22C55E;
-	
-	--color-bg-light: #FFFFFF;
-	--color-text-primary-light: #111111;
-	--color-text-secondary-light: #6B7280;
-	--color-divider-light: #E5E7EB;
+	--color-brand: #008a3e;
+	--color-canvas: #ffffff;
+	--color-surface: #ffffff;
+	--color-ink: #111827;
+	--color-muted: #4b5563;
+	--color-border: #e5e7eb;
 
-	--color-bg-dark: #0B0B0B;
-	--color-text-primary-dark: #F3F4F6;
-	--color-text-secondary-dark: #9CA3AF;
-	--color-divider-dark: #1F2937;
+	--font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+		Helvetica, Arial, sans-serif;
 }
 
 @layer base {
 	html {
-		font-family: Inter, system-ui, -apple-system, sans-serif;
-		background-color: var(--color-bg-light);
-		color: var(--color-text-primary-light);
+		font-family: var(--font-sans);
+		background: var(--color-canvas);
+		color: var(--color-ink);
 		line-height: 1.6;
-	}
-	
-	html.dark {
-		background-color: var(--color-bg-dark);
-		color: var(--color-text-primary-dark);
+		-webkit-font-smoothing: antialiased;
 	}
 
-	h1, h2, h3, h4, h5, h6 {
-		line-height: 1.3;
+	body {
+		margin: 0;
+		min-height: 100vh;
+		background: var(--color-canvas);
+	}
+
+	::selection {
+		background: #008a3e;
+		color: #ffffff;
 	}
 
 	a {
-		transition: color 150ms ease;
+		color: inherit;
+		text-decoration: none;
 	}
-	a:hover {
-		color: var(--color-accent-green);
+
+	:focus-visible {
+		outline: 2px solid var(--color-brand);
+		outline-offset: 2px;
 	}
 }
